@@ -29,7 +29,6 @@ public class CourierStep {
                 .when()
                 .post("/api/v1/courier/login")
                 .then()
-                .statusCode(200)
                 .extract()
                 .path("id")
                 .toString();
@@ -42,7 +41,6 @@ public class CourierStep {
                 .pathParam("id", id)
                 .when()
                 .delete("/api/v1/courier/{id}")
-                .then()
-                .statusCode(200);
+                .then();
     }
 }

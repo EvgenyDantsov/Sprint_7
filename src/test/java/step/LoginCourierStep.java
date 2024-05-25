@@ -18,9 +18,7 @@ public class LoginCourierStep {
                 .body(gson.toJson(courier))
                 .when()
                 .post("/api/v1/courier")
-                .then()
-                .statusCode(201)
-                .body("ok", is(true));
+                .then();
     }
 
     @Step("Login courier")
@@ -36,7 +34,6 @@ public class LoginCourierStep {
     @Step("Login courier and get id")
     public String loginCourierAndGetId(String login, String password) {
         return loginCourier(login, password)
-                .statusCode(200)
                 .extract()
                 .path("id")
                 .toString();

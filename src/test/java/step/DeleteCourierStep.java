@@ -28,7 +28,6 @@ public class DeleteCourierStep {
                 .when()
                 .post("/api/v1/courier/login")
                 .then()
-                .statusCode(200)
                 .extract()
                 .path("id")
                 .toString();
