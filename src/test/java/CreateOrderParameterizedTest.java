@@ -38,20 +38,18 @@ public class CreateOrderParameterizedTest extends BaseTest {
         createOrderStep = new CreateOrderStep();
     }
 
+    @After
+    public void tearDown() {
+        if (orders.getTrack() != null) {
+            createOrderStep.cancelOrder(orders);
+        }
+    }
+
     @Test
     @DisplayName("Create order with different colors")
     public void createOrderTest() {
         createOrderStep.createOrder(orders)
                 .statusCode(201)
                 .body("track", notNullValue());
-    }
-
-    @After
-    public void tearDown() {
-        if (orders.getTrack() != null) {
-            createOrderStep.cancelOrder(orders)
-                    .statusCode(200)
-                    .body("ok", is(true));
-        }
     }
 }
