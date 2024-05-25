@@ -40,7 +40,9 @@ public class CreateCourierTest extends BaseTest {
     @Test
     @DisplayName("Create new Courier") // имя теста
     public void createCourierTest() {
-        courierStep.createNewCourier(courier);
+        courierStep.createCourier(courier)
+                .statusCode(201)
+                .body("ok", is(true));;
         courierCreated = true;
     }
 
@@ -48,7 +50,7 @@ public class CreateCourierTest extends BaseTest {
     @DisplayName("Create a duplicate Courier")
     public void createDuplicateCourierTest() {
         // Создаем курьера первый раз
-        courierStep.createNewCourier(courier);
+        courierStep.createCourier(courier);
         courierCreated = true;
         // Пытаемся создать курьера второй раз с теми же данными
         courierStep.createCourier(courier)
@@ -75,7 +77,7 @@ public class CreateCourierTest extends BaseTest {
     @Test
     @DisplayName("Creating a Courier with an Existing Login")
     public void createCourierWithExistingLoginTest() {
-        courierStep.createNewCourier(courier);
+        courierStep.createCourier(courier);
         courierCreated = true;
         // Пытаемся создать курьера с существующим логином
         courierStep.createCourier(courierExistingLogin)

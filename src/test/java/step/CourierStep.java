@@ -11,13 +11,6 @@ import static org.hamcrest.CoreMatchers.is;
 public class CourierStep {
     private static final Gson gson = new Gson();
 
-    @Step("Create new courier and set flag")
-    public void createNewCourier(Courier courier) {
-        createCourier(courier)
-                .statusCode(201)
-                .body("ok", is(true));
-    }
-
     @Step("Create courier")
     public ValidatableResponse createCourier(Courier courier) {
         return given()
