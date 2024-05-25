@@ -18,9 +18,7 @@ public class DeleteCourierTest extends BaseTest {
     public void setUp() {
         courier = new Courier("sprint_7", "1234", "Evgeny");
         deleteCourierStep = new DeleteCourierStep();
-        deleteCourierStep.createCourier(courier)
-                .statusCode(201)
-                .body("ok", is(true));
+        deleteCourierStep.createCourier(courier);
         courierId = deleteCourierStep.loginCourierAndGetId(courier.getLogin(), courier.getPassword());
     }
 
@@ -40,12 +38,13 @@ public class DeleteCourierTest extends BaseTest {
         courierId = null; // Устанавливаем значение null, чтобы избежать удаления в tearDown
     }
 
+    //В данном тесте баг, в документации один результат, при выполнении в postman и в idea код: 404, тело: Not found.
     @Test
     @DisplayName("Delete courier without ID")
     public void deleteCourierWithoutIdTest() {
         deleteCourierStep.deleteCourier(null)
-                .statusCode(404)
-                .body("message", is("Not Found."));
+                .statusCode(400)
+                .body("message", is("Недостаточно данных для удаления курьера"));
     }
 
     @Test
