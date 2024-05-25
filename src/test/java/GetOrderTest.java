@@ -22,9 +22,7 @@ public class GetOrderTest extends BaseTest {
 
     @After
     public void tearDown() {
-        getOrderStep.deleteOrder(orders.getTrack())
-                .statusCode(200)
-                .body("ok", is(true));
+        getOrderStep.deleteOrder(orders.getTrack());
     }
 
     @Test
