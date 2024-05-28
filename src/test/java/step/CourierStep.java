@@ -6,7 +6,6 @@ import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
 
 public class CourierStep {
     private static final Gson gson = new Gson();
