@@ -1,4 +1,3 @@
-import com.google.gson.Gson;
 import courier.Courier;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
